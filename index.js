@@ -1,6 +1,6 @@
 let express = require('express');
 let mongoose = require('mongoose');
-let Student = require('./models/Student');
+let StudentModel = require('./models/Student');
 let app = express()
 
 mongoose.connect("mongodb+srv://ss:Gbc1234@cluster0.iksxy.mongodb.net/f2021_comp3123?retryWrites=true&w=majority",
@@ -22,14 +22,14 @@ app.get("/add", async(req, res)=>
     }
     let new_student = new StudentModel(s)
     try{
-        await new_student.save(s)
+       await new_student.save(s)
         console.log("Student Record Saved")
         res.status(200).send("Student Record Saved")
     }catch(err){
         console.log("Error:Student Record Saved" +err)
         res.status(500).send(err)
     }
-    res.send("<h1>MongoDB mongoose example")
+    
 })
 app.get("/students", async(req,res)=>{
     const s= await StudentModel.find({})

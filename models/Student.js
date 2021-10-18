@@ -16,5 +16,5 @@ total:{
     
 }
 })
-const Student = mongoose.model("student", StudentSchema)
+const Student = mongoose.model("students", StudentSchema)
 module.exports = Student
